@@ -1,7 +1,7 @@
 [![NPM Version](https://img.shields.io/npm/v/quill-cursors.svg)](https://npmjs.org/package/quill-cursors)
 [![Test](https://github.com/reedsy/quill-cursors/actions/workflows/test.yml/badge.svg)](https://github.com/reedsy/quill-cursors/actions/workflows/test.yml)
 
-# quill-cursors
+# quill-cursors 1
 
 A collaborative editing module for the [Quill](https://github.com/quilljs/quill) text editor used by the
 [Reedsy](https://reedsy.com) team.
