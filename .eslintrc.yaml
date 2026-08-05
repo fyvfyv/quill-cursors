@@ -1,6 +1,10 @@
-extends:
-  - 'plugin:@reedsy/recommended'
+# TEMPORARY: 'plugin:@reedsy/recommended' is removed while the @reedsy
+# GitHub Packages auth is unavailable locally. Restore the extends line
+# (and the devDependency) to re-enable the style checks.
+parser: '@typescript-eslint/parser'
 parserOptions:
-  project: './tsconfig.base.json'
+  ecmaVersion: 2022
+  sourceType: module
 env:
   node: true
+  browser: true

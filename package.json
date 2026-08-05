@@ -15,15 +15,18 @@
   ],
   "license": "MIT",
   "main": "dist/quill-cursors.js",
+  "module": "dist/quill-cursors.mjs",
   "types": "dist/index.d.ts",
   "style": "dist/quill-cursors.min.css",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
+      "import": "./dist/quill-cursors.mjs",
       "default": "./dist/quill-cursors.js"
     },
     "./core": {
       "types": "./dist/index.core.d.ts",
+      "import": "./dist/quill-cursors.core.mjs",
       "default": "./dist/quill-cursors.core.js"
     },
     "./css": "./dist/quill-cursors.min.css"
@@ -43,7 +46,6 @@
     "url": "git+https://github.com/reedsy/quill-cursors.git"
   },
   "devDependencies": {
-    "@reedsy/eslint-plugin": "^0.14.2",
     "@testing-library/jest-dom": "^5.16.1",
     "@types/jest": "^27.4.0",
     "@types/node": "25.3.1",

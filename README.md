@@ -263,9 +263,16 @@ To support these use cases, `quill-cursors` provides separate builds:
 
 | File | Description |
 |---|---|
-| `dist/quill-cursors.js` | Full bundle with inline style injection (default, backwards-compatible) |
-| `dist/quill-cursors.core.js` | JS-only bundle, no style injection |
+| `dist/quill-cursors.js` | Full bundle with inline style injection (UMD, default, backwards-compatible) |
+| `dist/quill-cursors.mjs` | Full bundle as an ES module |
+| `dist/quill-cursors.core.js` | JS-only bundle, no style injection (UMD) |
+| `dist/quill-cursors.core.mjs` | JS-only bundle as an ES module |
 | `dist/quill-cursors.min.css` | Standalone CSS file with all cursor styles |
+
+Bundlers that understand the `exports` map (webpack, Vite, esbuild, Angular CLI)
+pick the ES module builds automatically when you `import`, which avoids
+CommonJS optimization bailout warnings. The UMD builds remain the fallback for
+`require()` and `<script>` tags.
 
 ### Import examples
 
