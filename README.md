@@ -1,5 +1,5 @@
 [![NPM Version](https://img.shields.io/npm/v/quill-cursors.svg)](https://npmjs.org/package/quill-cursors)
-[![Test](https://github.com/reedsy/quill-cursors/actions/workflows/test.yml/badge.svg)](https://github.com/reedsy/quill-cursors/actions/workflows/test.yml)
+[![CI](https://github.com/reedsy/quill-cursors/actions/workflows/ci.yml/badge.svg)](https://github.com/reedsy/quill-cursors/actions/workflows/ci.yml)
 
 # quill-cursors
 
