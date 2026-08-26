@@ -17,7 +17,7 @@ export default class QuillCursors {
   public readonly quill: any;
   public readonly options: IQuillCursorsOptions;
 
-  private readonly _cursors: { [id: string]: Cursor } = {};
+  private readonly _cursors: {[id: string]: Cursor} = {};
   private readonly _container: HTMLElement;
   private readonly _boundsContainer: HTMLElement;
   private readonly _editor: HTMLElement;
@@ -26,7 +26,7 @@ export default class QuillCursors {
   private _destroyed = false;
   private _resizeObserver: ResizeObserver | null = null;
   private _touchTimerIds: ReturnType<typeof setTimeout>[] = [];
-  private _quillListeners: Array<{ event: string; wrapped: (...args: any[]) => void }> = [];
+  private _quillListeners: Array<{event: string; wrapped: (...args: any[]) => void}> = [];
   private _domListeners: Array<{target: HTMLElement; event: string; wrapped: EventListener}> = [];
 
   public constructor(quill: any, options: IQuillCursorsOptions = {}) {

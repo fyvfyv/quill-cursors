@@ -1,6 +1,0 @@
-extends:
-  - 'plugin:@reedsy/recommended'
-parserOptions:
-  project: './tsconfig.base.json'
-env:
-  node: true
