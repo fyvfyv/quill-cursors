@@ -7,14 +7,31 @@ const baseConfig = {
   resolve: {
     extensions: ['.ts', '.js'],
   },
+  // The bundles re-export the entry module's own exports (default + Cursor),
+  // so they carry no library name.
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
-    library: 'QuillCursors',
-    libraryTarget: 'umd',
+    library: {type: 'module'},
   },
+  experiments: {outputModule: true},
   mode: environment,
   devtool: isProduction ? false : 'inline-source-map',
+};
+
+const tsRule = {
+  test: /\.ts$/,
+  exclude: /node_modules/,
+  use: ['ts-loader'],
+};
+
+const scssRule = {
+  test: /\.scss$/,
+  use: [
+    'style-loader',
+    'css-loader',
+    'sass-loader',
+  ],
 };
 
 const moduleBundle = {
@@ -22,26 +39,8 @@ const moduleBundle = {
   entry: {
     'quill-cursors': './src/index.ts',
   },
-  output: {
-    ...baseConfig.output,
-    libraryExport: 'default',
-  },
   module: {
-    rules: [
-      {
-        test: /\.ts$/,
-        exclude: /node_modules/,
-        use: ['ts-loader'],
-      },
-      {
-        test: /\.scss$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          'sass-loader',
-        ],
-      },
-    ],
+    rules: [tsRule, scssRule],
   },
   devServer: {
     static: [
@@ -57,13 +56,7 @@ const coreBundleConfig = {
     'quill-cursors.core': './src/index.core.ts',
   },
   module: {
-    rules: [
-      {
-        test: /\.ts$/,
-        exclude: /node_modules/,
-        use: ['ts-loader'],
-      },
-    ],
+    rules: [tsRule],
   },
 };
 

@@ -1,6 +1,6 @@
 {
   "name": "quill-cursors",
-  "version": "5.0.0",
+  "version": "6.0.0",
   "description": "A multi cursor module for Quill.",
   "keywords": [
     "quill",
@@ -14,6 +14,7 @@
     "Oleg Petrov <oleg@fyvfyv.com>"
   ],
   "license": "MIT",
+  "type": "module",
   "main": "dist/quill-cursors.js",
   "types": "dist/index.d.ts",
   "style": "dist/quill-cursors.min.css",
