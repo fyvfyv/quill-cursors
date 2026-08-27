@@ -172,7 +172,7 @@ describe('QuillCursors', () => {
     beforeEach(() => {
       listeners = {};
 
-      jest.spyOn(quill, 'on').mockImplementation(((event: string, callback: Function) => {
+      jest.spyOn(quill, 'on').mockImplementation(((event: string, callback: (...args: any[]) => void) => {
         listeners[event] = callback;
       }) as any);
 
@@ -253,7 +253,7 @@ describe('QuillCursors', () => {
     beforeEach(() => {
       listeners = {};
 
-      jest.spyOn(quill, 'on').mockImplementation(((event: string, callback: Function) => {
+      jest.spyOn(quill, 'on').mockImplementation(((event: string, callback: (...args: any[]) => void) => {
         listeners[event] = callback;
       }) as any);
 
@@ -942,7 +942,7 @@ describe('QuillCursors', () => {
     it('does not emit selection change when destroyed before pending text-change timer fires', () => {
       jest.useFakeTimers();
       const listeners: any = {};
-      jest.spyOn(quill, 'on').mockImplementation(((event: string, callback: Function) => {
+      jest.spyOn(quill, 'on').mockImplementation(((event: string, callback: (...args: any[]) => void) => {
         listeners[event] = callback;
       }) as any);
       jest.spyOn(quill.emitter, 'emit');
@@ -959,7 +959,7 @@ describe('QuillCursors', () => {
     it('does not transform cursors when destroyed before pending text-change timer fires', () => {
       jest.useFakeTimers();
       const listeners: any = {};
-      jest.spyOn(quill, 'on').mockImplementation(((event: string, callback: Function) => {
+      jest.spyOn(quill, 'on').mockImplementation(((event: string, callback: (...args: any[]) => void) => {
         listeners[event] = callback;
       }) as any);
 
@@ -1026,7 +1026,7 @@ describe('QuillCursors', () => {
     describe('auto-teardown via Quill.find', () => {
       it('forwards events to handler when Quill.find returns the instance', () => {
         const listeners: any = {};
-        jest.spyOn(quill, 'on').mockImplementation(((event: string, cb: Function) => {
+        jest.spyOn(quill, 'on').mockImplementation(((event: string, cb: (...args: any[]) => void) => {
           listeners[event] = cb;
         }) as any);
         quill.constructor.find.mockReturnValue(quill);
@@ -1040,7 +1040,7 @@ describe('QuillCursors', () => {
 
       it('calls destroy when Quill.find returns null', () => {
         const listeners: any = {};
-        jest.spyOn(quill, 'on').mockImplementation(((event: string, cb: Function) => {
+        jest.spyOn(quill, 'on').mockImplementation(((event: string, cb: (...args: any[]) => void) => {
           listeners[event] = cb;
         }) as any);
         quill.constructor.find.mockReturnValue(null);
@@ -1054,7 +1054,7 @@ describe('QuillCursors', () => {
 
       it('does not forward events after Quill.find returns null', () => {
         const listeners: any = {};
-        jest.spyOn(quill, 'on').mockImplementation(((event: string, cb: Function) => {
+        jest.spyOn(quill, 'on').mockImplementation(((event: string, cb: (...args: any[]) => void) => {
           listeners[event] = cb;
         }) as any);
         quill.constructor.find.mockReturnValue(null);
@@ -1077,7 +1077,7 @@ describe('QuillCursors', () => {
 
       it('calls destroy when Quill.find returns null on selection-change', () => {
         const listeners: any = {};
-        jest.spyOn(quill, 'on').mockImplementation(((event: string, cb: Function) => {
+        jest.spyOn(quill, 'on').mockImplementation(((event: string, cb: (...args: any[]) => void) => {
           listeners[event] = cb;
         }) as any);
         jest.spyOn(quill, 'off');
@@ -1092,7 +1092,7 @@ describe('QuillCursors', () => {
 
       it('does not forward selection-change events after Quill.find returns null', () => {
         const listeners: any = {};
-        jest.spyOn(quill, 'on').mockImplementation(((event: string, cb: Function) => {
+        jest.spyOn(quill, 'on').mockImplementation(((event: string, cb: (...args: any[]) => void) => {
           listeners[event] = cb;
         }) as any);
         quill.constructor.find.mockReturnValue(null);

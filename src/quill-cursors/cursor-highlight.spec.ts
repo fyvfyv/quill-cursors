@@ -52,7 +52,7 @@ describe('CursorHighlight', () => {
     it('skips names already taken in the registry', () => {
       const current = new CursorHighlight('red');
       const nextNumber = Number(current.name.split('-').pop()) + 1;
-      const takenName = `${ CursorHighlight.NAME_PREFIX }-${ nextNumber }`;
+      const takenName = `${CursorHighlight.NAME_PREFIX}-${nextNumber}`;
       (CSS as any).highlights.set(takenName, new Highlight());
 
       const next = new CursorHighlight('red');
@@ -107,7 +107,7 @@ describe('CursorHighlight', () => {
       highlight.setRange(document.createRange(), document);
 
       expect((document as any).adoptedStyleSheets[0].cssText).toBe(
-        `::highlight(${ highlight.name }) { background-color: color-mix(in srgb, ` +
+        `::highlight(${highlight.name}) { background-color: color-mix(in srgb, ` +
         'transparent calc(var(--ql-cursor-selection-fade, 0.3) * 100%), transparent); }',
       );
     });
@@ -157,7 +157,7 @@ describe('CursorHighlight', () => {
       expect(sheets).toHaveLength(1);
       expect(sheets[0].cssText)
         .toBe(
-          `::highlight(${ highlight.name }) { background-color: color-mix(in srgb, ` +
+          `::highlight(${highlight.name}) { background-color: color-mix(in srgb, ` +
           'red calc(var(--ql-cursor-selection-fade, 0.3) * 100%), transparent); }',
         );
     });

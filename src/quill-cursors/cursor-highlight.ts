@@ -42,7 +42,7 @@ export default class CursorHighlight implements ICursorHighlight {
   // shares the page-global registry but not this counter, so skip taken numbers.
   private static _nextNumber(): number {
     let number = nextHighlightNumber++;
-    while (CSS.highlights.has(`${ CursorHighlight.NAME_PREFIX }-${ number }`)) {
+    while (CSS.highlights.has(`${CursorHighlight.NAME_PREFIX}-${number}`)) {
       number = nextHighlightNumber++;
     }
     return number;
@@ -59,7 +59,7 @@ export default class CursorHighlight implements ICursorHighlight {
   public constructor(color: string) {
     this._color = CursorHighlight._safeColor(color);
     this._priority = CursorHighlight._nextNumber();
-    this.name = `${ CursorHighlight.NAME_PREFIX }-${ this._priority }`;
+    this.name = `${CursorHighlight.NAME_PREFIX}-${this._priority}`;
     // Register eagerly: this reserves the name in the page-global registry,
     // so another module copy probing _nextNumber cannot take the same one.
     this._register();
@@ -141,9 +141,9 @@ export default class CursorHighlight implements ICursorHighlight {
 
   private _buildSheet(): CSSStyleSheet {
     const sheet = new CSSStyleSheet();
-    const fade = `calc(${ CursorHighlight.SELECTION_FADE } * 100%)`;
-    const background = `color-mix(in srgb, ${ this._color } ${ fade }, transparent)`;
-    sheet.replaceSync(`::highlight(${ this.name }) { background-color: ${ background }; }`);
+    const fade = `calc(${CursorHighlight.SELECTION_FADE} * 100%)`;
+    const background = `color-mix(in srgb, ${this._color} ${fade}, transparent)`;
+    sheet.replaceSync(`::highlight(${this.name}) { background-color: ${background}; }`);
     return sheet;
   }
 
