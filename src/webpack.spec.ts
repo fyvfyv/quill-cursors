@@ -20,8 +20,8 @@ describe('webpack config', () => {
 
   it('should produce an ES module bundle for both entries', () => {
     expect(configs.map((c: any) => c.entry)).toEqual([
-      {'quill-cursors': './src/index.ts'},
-      {'quill-cursors.core': './src/index.core.ts'},
+      {'quill-cursors': ['./assets/quill-cursors.scss', './src/index.ts']},
+      {'quill-cursors.core': './src/index.ts'},
     ]);
     for (const config of configs) {
       expect(config.output.filename).toBe('[name].js');
@@ -29,6 +29,7 @@ describe('webpack config', () => {
       expect(config.output.library).toEqual({type: 'module'});
       expect(config.experiments).toEqual({outputModule: true});
       expect(config.module.rules[0].use).toEqual(['ts-loader']);
+      expect(config.resolve.extensionAlias).toEqual({'.js': ['.ts', '.js']});
     }
   });
 

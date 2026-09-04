@@ -1,8 +1,8 @@
-import IQuillCursorsOptions from './i-quill-cursors-options';
-import Cursor from './cursor';
-import IQuillRange from './i-range';
-import CursorHighlight from './cursor-highlight';
-import template from './template';
+import IQuillCursorsOptions from './i-quill-cursors-options.js';
+import Cursor from './cursor.js';
+import IQuillRange from './i-range.js';
+import CursorHighlight from './cursor-highlight.js';
+import template from './template.js';
 import Delta from 'quill-delta';
 
 export default class QuillCursors {
@@ -129,8 +129,7 @@ export default class QuillCursors {
     this.cursors().forEach((cursor) => {
       cursor.toggleNearCursor(e.pageX, e.pageY);
       const timerId = setTimeout(() => {
-        const index = this._touchTimerIds.indexOf(timerId);
-        if (index !== -1) this._touchTimerIds.splice(index, 1);
+        this._touchTimerIds = this._touchTimerIds.filter((id) => id !== timerId);
         cursor.toggleFlag(false);
       }, this.options.hideDelayMs);
       this._touchTimerIds.push(timerId);
