@@ -6,6 +6,8 @@ const isProduction = environment === 'production';
 const baseConfig = {
   resolve: {
     extensions: ['.ts', '.js'],
+    // Source uses node16-style `./x.js` specifiers that map onto .ts files.
+    extensionAlias: {'.js': ['.ts', '.js']},
   },
   // The bundles re-export the entry module's own exports (default + Cursor),
   // so they carry no library name.
@@ -36,8 +38,10 @@ const scssRule = {
 
 const moduleBundle = {
   ...baseConfig,
+  // Loads the stylesheet for its side effect; the last entry module's exports
+  // become the bundle's exports.
   entry: {
-    'quill-cursors': './src/index.ts',
+    'quill-cursors': ['./assets/quill-cursors.scss', './src/index.ts'],
   },
   module: {
     rules: [tsRule, scssRule],
@@ -53,7 +57,7 @@ const moduleBundle = {
 const coreBundleConfig = {
   ...baseConfig,
   entry: {
-    'quill-cursors.core': './src/index.core.ts',
+    'quill-cursors.core': './src/index.ts',
   },
   module: {
     rules: [tsRule],

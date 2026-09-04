@@ -12,6 +12,9 @@ The package is now [ESM-only](https://github.com/reedsy/quill-cursors/issues/96)
   can still `require()` the ES module natively).
 * Bundlers (webpack, Vite, esbuild, Angular CLI) resolve the ES modules via the
   `exports` map, which removes the CommonJS optimization bailout warnings.
+* The type declarations are strict ES modules too (explicit `.js` extensions, no
+  stylesheet side-effect import), so they resolve under `moduleResolution: node16`
+  and `bundler`.
 
 # 5.0.0
 
