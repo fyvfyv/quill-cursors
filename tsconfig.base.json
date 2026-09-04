@@ -12,9 +12,7 @@
       "jest",
       "node"
     ],
-    // TypeScript 6 defaults to strict; keep the pre-6 checks until the code is migrated.
-    "strict": false,
-    "noImplicitAny": true,
+    "strict": true,
     "sourceMap": true,
     "removeComments": true,
     "esModuleInterop": true,

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="v$(node -p "require('./package.json').version")"
+VERSION="v$(npm pkg get version | tr -d '"')"
 
 git checkout main
 git pull

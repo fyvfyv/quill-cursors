@@ -15,6 +15,8 @@ The package is now [ESM-only](https://github.com/reedsy/quill-cursors/issues/96)
 * The type declarations are strict ES modules too (explicit `.js` extensions, no
   stylesheet side-effect import), so they resolve under `moduleResolution: node16`
   and `bundler`.
+* The types now admit `null` where the runtime always did: `cursor.range`, the
+  range passed to `moveCursor()`, and the `selectionChangeSource` option.
 
 # 5.0.0
 

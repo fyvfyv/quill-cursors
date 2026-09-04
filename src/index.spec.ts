@@ -1,22 +1,24 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import * as index from './index.js';
+import QuillCursors from './quill-cursors/quill-cursors.js';
+import Cursor from './quill-cursors/cursor.js';
 
 describe('index', () => {
   it('should export QuillCursors as default', () => {
-    const indexCore = require('./index');
-    const QuillCursors = require('./quill-cursors/quill-cursors').default;
-    expect(indexCore.default).toBe(QuillCursors);
+    expect(index.default).toBe(QuillCursors);
   });
 
   it('should export Cursor as a named export', () => {
-    const indexCore = require('./index');
-    const Cursor = require('./quill-cursors/cursor').default;
-    expect(indexCore.Cursor).toBe(Cursor);
+    expect(index.Cursor).toBe(Cursor);
   });
 
+  // The stylesheet is a webpack entry of the full bundle, not a TypeScript
+  // import: a side-effect import here would end up in the published index.d.ts.
   it('should NOT import any .scss or .css files', () => {
+    const specPath = expect.getState().testPath!;
     const source = fs.readFileSync(
-      path.resolve(__dirname, 'index.ts'),
+      path.resolve(path.dirname(specPath), 'index.ts'),
       'utf-8',
     );
     expect(source).not.toMatch(/\.scss/);
