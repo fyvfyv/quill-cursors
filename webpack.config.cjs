@@ -9,8 +9,6 @@ const baseConfig = {
     // Source uses node16-style `./x.js` specifiers that map onto .ts files.
     extensionAlias: {'.js': ['.ts', '.js']},
   },
-  // The bundles re-export the entry module's own exports (default + Cursor),
-  // so they carry no library name.
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),

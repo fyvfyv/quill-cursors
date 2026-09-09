@@ -50,7 +50,6 @@ describe('built bundles', () => {
     execFileSync(process.execPath, [require.resolve('webpack-cli/bin/cli.js'), '--output-path', outputPath], {
       cwd: root,
       env: {...process.env, NODE_ENV: 'production'},
-      stdio: 'pipe',
     });
     full = inspectBundle(path.join(outputPath, 'quill-cursors.js'));
     core = inspectBundle(path.join(outputPath, 'quill-cursors.core.js'));
