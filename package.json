@@ -30,7 +30,8 @@
     "./css": "./dist/quill-cursors.min.css"
   },
   "files": [
-    "dist"
+    "dist",
+    "!dist/styled.d.ts"
   ],
   "scripts": {
     "prebuild": "rm -rf dist",
@@ -55,6 +56,7 @@
     "globals": "^17.11.0",
     "jest": "^30.5.1",
     "jest-environment-jsdom": "^30.5.1",
+    "jsdom": "^29.1.1",
     "quill": "^1.3.7",
     "quill-delta": "^4.2.2",
     "sass": "^1.49.7",

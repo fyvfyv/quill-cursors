@@ -38,10 +38,8 @@ const scssRule = {
 
 const moduleBundle = {
   ...baseConfig,
-  // Loads the stylesheet for its side effect; the last entry module's exports
-  // become the bundle's exports.
   entry: {
-    'quill-cursors': ['./assets/quill-cursors.scss', './src/index.ts'],
+    'quill-cursors': './src/styled.ts',
   },
   module: {
     rules: [tsRule, scssRule],
